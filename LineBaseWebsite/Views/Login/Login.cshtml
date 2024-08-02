@@ -1,0 +1,125 @@
+﻿@model LineBaseWebsite.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        /*background: #16a085;*/
+        background:white;
+        overflow: hidden;
+    }
+    .container {
+        max-width: 440px;
+        padding: 0px,20px;
+        margin: 170px auto;
+    }
+    .wrapper {
+        width: 100%;
+        background: #b3b4bd;
+        border-radius: 5px;
+    }
+    .wrapper .title {
+        line-height: 90px;
+        background: #2c2e3a;
+        border-radius: 5px 5px 0 0;
+        color: black;
+        font-size: 30px;
+        font-weight: 600;
+        text-align:center;
+        color:white;
+    }
+        .wrapper form {
+            padding: 20px 20px 25px 20px;
+        }
+    
+    .wrapper .row{
+        height:45px;
+        margin-bottom:15px;
+        position:relative;
+    }
+    .wrapper form .row #input{
+        height:100%;
+        width:100%;
+        padding-left:60px;
+        outline:none;
+        border-radius:5px;
+        border:1px solid lightgrey;
+        font-size:16px;
+        transition:all 0.3s ease;
+    }
+    .wrapper form .row i {
+        position: absolute;
+        width: 47px;
+        height: 100%;
+        background: #2c3e3a;
+        border: 1px solid #2c3e3a;
+        display: flex;
+        color:white;
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px 0 0 5px;
+    }
+    form .row #input:focus {
+        border-color: #141619;
+        box-shadow: inset 0px,0px,2px,2px #fd7c16;
+    }
+    .wrapper form .button #input {
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        padding-left: 0px;
+        background: #141619;
+        border: 1px solid #141619;
+        cursor: pointer;
+    }
+    form .button #input:hover {
+        background: #262830;
+    }
+    .wrapper form .row .custom-dropdown {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+    }
+    .wrapper form .row .custom-dropdown option {
+        padding: 10px;
+        border-radius:0 !important;
+        border: 1px solid #ced4da;
+        color: #495057;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title"><span>Login Form</span></div>
+            <form action="Login" method="post">
+                <div class="row">
+                    <i class="fa fa-user"></i>
+                    @Html.DropDownListFor(m => m.User, new SelectList((List<string>)TempData["Users"]), "Select User",new {@class = "custom-dropdown", @id = "input"})
+                </div>
+                <div class="row">
+                    <i class="fa fa-lock"></i>
+                    @Html.PasswordFor(p => p.Password, new { @id = "input",PlaceHolder ="Password"})
+                </div>
+                <div class="row">
+                    <i class="fa fa-user"></i>
+                    @Html.DropDownListFor(m => m.LineNumber, new SelectList((List<string>)TempData["Users"]), "Select User", new { @class = "custom-dropdown", @id = "input" })
+                </div>
+                <div class="row button">
+                    <button id="input" value="Login">Login</button>
+                </div>
+                <p>@ViewBag.Message</p>
+            </form>
+        </div>
+    </div>
+</body>
+

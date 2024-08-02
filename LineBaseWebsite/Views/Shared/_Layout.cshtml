@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/MainLayout.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <header class="top-header">
+            <div class="logo">
+                <img src="~/Content/Images/logo.ico" alt="Logo" />
+            </div>
+        </header>
+        <div class="side-nav">
+            <nav class="sidebar-navigation">
+                <ul>
+                    <li class="active">
+                        <i class="fa fa-share-alt"></i>
+                        <span class="tooltip">Connections</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-hdd-o"></i>
+                        <span class="tooltip">Devices</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-newspaper-o"></i>
+                        <span class="tooltip">Contacts</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-print"></i>
+                        <span class="tooltip">Fax</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-sliders"></i>
+                        <span class="tooltip">Settings</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <script>
+        $('ul li').on('click', function () {
+            $('li').removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
+    <div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
